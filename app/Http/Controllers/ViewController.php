@@ -43,6 +43,8 @@ class ViewController extends Controller
         $articolo = $articoli[$id];
         return view('articolo', ['articolo' => $articolo]);
     }
-
-
+    public function showForm()
+    {
+        return view('contatti');
+    }
 }
