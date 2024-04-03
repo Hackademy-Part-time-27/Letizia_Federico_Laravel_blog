@@ -17,7 +17,7 @@
             </ul>
 
             <div class="">
-                    <a class="nav-link fs-5 text-white font-weight-bold" href="{{ route('articoli') }}">Crea Articolo</a>
+                    <a class="nav-link fs-5 text-white font-weight-bold" href="{{ route('creaArticoli') }}">Crea Articolo</a>
             </div>
         </div>
     </nav>

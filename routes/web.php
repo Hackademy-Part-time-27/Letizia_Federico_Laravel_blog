@@ -19,6 +19,8 @@ Route::get('/contatti', [viewController::class, 'showForm'])->name('contatti');
 
 Route::post('/contatti', [ContactController::class, 'processForm'])->name('contact.processForm');
 
-Route::get('/articoli/crea', [ArticleController::class, 'create']);
+Route::get('/articoli/crea', [ArticleController::class, 'create'])->name('creaArticoli');
+
+Route::post('/articoli/store', [ArticleController::class, 'store'])->name('storeArticoli');
 
 Route::get('/articles', [ArticleController::class, 'index']);
