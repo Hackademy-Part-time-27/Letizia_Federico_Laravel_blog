@@ -3,6 +3,7 @@
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ArticleController;
 
 Route::get('/', [ViewController::class, 'home'])->name('homepage');
 
@@ -17,3 +18,7 @@ Route::view('/contatti', 'contatti')->name('contatti');
 Route::get('/contatti', [viewController::class, 'showForm'])->name('contatti');
 
 Route::post('/contatti', [ContactController::class, 'processForm'])->name('contact.processForm');
+
+Route::get('/articoli/crea', [ArticleController::class, 'create']);
+
+Route::get('/articles', [ArticleController::class, 'index']);

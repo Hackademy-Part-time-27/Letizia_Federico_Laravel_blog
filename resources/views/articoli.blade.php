@@ -7,10 +7,10 @@
         @else
             @foreach($articoli as $key => $articolo)
                 <x-card
-                    :title="$articolo['title']"
+                    :title="$articolo->title"
                     :id="$key" 
-                    :category="$articolo['category']"
-                    :description="$articolo['description']"
+                    :category="$articolo->category"
+                    :description="$articolo->description"
                     :route="route('articolo', $key)"/>
             @endforeach
         @endif
