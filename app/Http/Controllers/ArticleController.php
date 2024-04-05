@@ -26,7 +26,7 @@ class ArticleController extends Controller
 
             $fileName = uniqid('image') . '.' .  $extension;
 
-            $article->image = $request->file('image')->storeAs('public/image', $fileName);
+            $article->image = $request->file('image')->storeAs('public/image/' . $article -> id, $fileName);
 
             $article->save();
         }
