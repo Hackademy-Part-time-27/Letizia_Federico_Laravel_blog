@@ -7,4 +7,7 @@
         <a href="{{ route('articoli') }}" class="btn btn-primary">Torna agli articoli</a>
     </div>
 
+    <img class="img-fluid" src="{{ Storage::url($article->image) }}" alt="{{ $articolo['title'] }}">
+
+
 </x-layout>

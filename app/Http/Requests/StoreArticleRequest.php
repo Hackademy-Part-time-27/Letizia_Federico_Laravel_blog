@@ -22,10 +22,23 @@ class StoreArticleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title'  => 'required',
-            'category'  => 'required',
-            'description'  => 'required',
-            'body'   => 'required',
+            'title'  => 'required|max:150',
+            'category'  => 'required|max:50',
+            'description'  => 'required|max:255',
+            'body'   => 'required|max:5000',
+        ];
+    }
+    public function messages(): array
+    {
+        return[
+          'title.required'=>"Il titolo  è obbligatorio",
+          'title.max'=> "il titolo non può superare i 150 caratteri",
+          'category.required'=> "La categoria è obbligatoria",
+          'category.max'=> "la categoria non può superare i 50 caratteri",
+          'description.required'=> "La descrizione è obbligatoria",
+          'description.max'=> "La descrizione non può superare i 255 caratteri",
+          'body.required'=> "Il testo dell'articolo è obbligatorio",
+          'body.max'=> "Il testo dell'articolo non può superare i 5000 caratteri",
         ];
     }
 }
