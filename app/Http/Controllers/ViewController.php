@@ -25,4 +25,5 @@ class ViewController extends Controller
     {
         return view('contatti');
     }
+    
 }

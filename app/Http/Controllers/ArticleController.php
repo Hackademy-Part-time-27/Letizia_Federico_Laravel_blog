@@ -33,7 +33,7 @@ class ArticleController extends Controller
 
         
 
-        return  redirect()->back()->with(['success'=>'Articolo inserito con successo']);
+        return  redirect()->route('articoliAuth')->with(['success'=>'Articolo inserito con successo']);
     }
 
 

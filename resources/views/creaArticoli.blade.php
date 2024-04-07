@@ -3,8 +3,6 @@
     <div class="mt-5 m-5">
         <h1 class="text-center mb-5">Crea Articolo</h1>
 
-        <x-succes />
-
         <form action="{{ route('storeArticoli') }}" method="POST" enctype="multipart/form-data">
             @csrf
 

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <style>
         .navbar-nav .nav-item {
-            margin-right: 30px;
+            margin-right: 40px;
         }
     </style>
     @vite(['resources/css/app.css', 'resources/js/app.js'])

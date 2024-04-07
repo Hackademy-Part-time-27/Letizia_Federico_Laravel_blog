@@ -1,7 +1,9 @@
 <x-layout title="tutti gli articoli">
 
-<h1>Tutti gli articoli</h1>
-
+<h1 class="text-center mt-5">Tutti gli articoli</h1>
+<a href="{{'articoli/crea'}}">
+<button class="m-3">indietro</button>
+</a>
 <div class="mt-5">
     <table class="table table-bordered">
         <thead>
