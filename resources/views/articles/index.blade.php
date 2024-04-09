@@ -7,12 +7,12 @@
 <div class="mt-5">
     <table class="table table-bordered">
         <thead>
-            <tr>
+            <tr class="text-center">
                 <th>#</th>
                 <th>Titolo</th>
                 <th>Categoria</th>
                 <th>Visibile</th>
-                <th></th>
+                <th>elimina</th>
             </tr>
         </thead>
         <tbody>
@@ -27,7 +27,13 @@
                     <span>no</span>
                     @endif
                 </td>
-                <td></td>
+                <td>
+                    <form action="{{route('articles.destroy', $article )}}" method="post">
+                        @csrf
+                        @method("DELETE")
+                        <button type="submit" clas="btn btn-danger">cancella</button>
+                    </form>
+                </td>
             </tr>
             @endforeach
         </tbody>

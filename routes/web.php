@@ -1,10 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\ContactController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\CategoryController;
 
 Route::get('/', [ViewController::class, 'home'])->name('homepage');
 
@@ -21,11 +22,14 @@ Route::get('/contatti', [viewController::class, 'showForm'])->name('contatti');
 Route::post('/contatti', [ContactController::class, 'processForm'])->name('contact.processForm');
 
 
-route::middleware('auth')->group(function() {
+route::prefix('account')->middleware('auth')->group(function() {
 
-    Route::get('/account/articoli/crea', [ArticleController::class, 'create'])->name('creaArticoli');
-    Route::post('/account/articoli/store', [ArticleController::class, 'store'])->name('storeArticoli');
-    Route::get('/account/articles', [ArticleController::class, 'index'])->name('articoliAuth');
-    route::get('/account', [AccountController::class, 'index'])->name('account.index');
+    route::get('/', [AccountController::class, 'index'])->name('account.index');
 
+    Route::get('/articles', [ArticleController::class, 'index'])->name('articoliAuth');
+    Route::get('/articoli/crea', [ArticleController::class, 'create'])->name('creaArticoli');
+    Route::post('/articoli/store', [ArticleController::class, 'store'])->name('storeArticoli');
+    
+
+    route::resource('/categories', CategoryController::class);
 });

@@ -23,6 +23,7 @@
                             <ul class="dropdown-menu dropdown-menu-end ms-auto" aria-labelledby="dropdownMenuButton">
                                 <li><a class="dropdown-item  font-weight-bold" href="{{ route('creaArticoli') }}">Crea Articolo</a></li> 
                                 <li><a class="dropdown-item" href="{{ route('articoliAuth')}}">Gestione articoli</a></li>
+                                <li><a class="dropdown-item" href="{{ route('categories.store')}}">Gestione Categorie</a></li>
                                 <li><hr class="dropdown-divider"></a></li>
                                 <li>
                                     <form action="/logout" method="post">

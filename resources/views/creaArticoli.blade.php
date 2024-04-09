@@ -16,8 +16,12 @@
 
             <div class="form-group">
                 <label for="category">Category:</label>
-                <input type="text" class="form-control" id="category" name="category" value="{{ old('category') }}">
-            </div>
+                <select name="category" id="category" class="form-control">
+                    @foreach ($categories as $category)
+                         <option value="{{$category->name}}">{{$category->name}}</option>    
+                    @endforeach
+                </select>
+                </div>
             @error('category')
                 <small class="text-danger">{{ $message }}</small>  
             @enderror
