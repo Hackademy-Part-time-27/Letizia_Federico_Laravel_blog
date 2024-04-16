@@ -21,8 +21,15 @@
             <tr>
                 <td>{{$article->id}}</td>
                 <td>{{$article->title}}</td>
-                <td>{{$article->category}}</td>
-                <td>@if ($article->visible)
+
+                @if( $article->category_id )
+                <td></td>
+                @else
+                <td>{{ $article->category->name }}</td>
+                @endif
+
+                <td>
+                    @if ($article->visible)
                     <span>si</span>
                     @else
                     <span>no</span>

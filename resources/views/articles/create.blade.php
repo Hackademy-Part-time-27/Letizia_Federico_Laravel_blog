@@ -14,7 +14,7 @@
             @csrf
 
             <div class="form-group ">
-                <label for="title">Title:</label>
+                <label for="title">titolo:</label>
                 <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}" >
             </div>
             @error('title')
@@ -22,10 +22,10 @@
             @enderror
 
             <div class="form-group">
-                <label for="category">Category:</label>
-                <select name="category" id="category" class="form-control">
+                <label for="category_id">Categoria:</label>
+                <select name="category_id" id="category_id" class="form-control">
                     @foreach ($categories as $category)
-                         <option value="{{$category->name}}">{{$category->name}}</option>    
+                         <option value="{{$category->id}}">{{$category->name}}</option>    
                     @endforeach
                 </select>
                 </div>
@@ -34,7 +34,7 @@
             @enderror
 
             <div class="form-group">
-                <label for="description">Description:</label>
+                <label for="description">Descrizione:</label>
                 <textarea class="form-control" id="description" name="description" rows="3">{{ old('description') }} </textarea>
             </div>
             @error('description')

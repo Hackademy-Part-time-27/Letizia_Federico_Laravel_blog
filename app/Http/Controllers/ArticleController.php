@@ -21,7 +21,7 @@ class ArticleController extends Controller
     {
         $article = Article::create($request->all());
 
-        Mail::to('Admin@example.com')->send(new NewArticle($article->title));
+        // Mail::to('Admin@example.com')->send(new NewArticle($article->title));
 
         if($request->hasFile('image') &&  $request->file('image')->isValid()) {
             
