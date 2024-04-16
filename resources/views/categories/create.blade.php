@@ -1,8 +1,16 @@
 <x-layout title="Crea Categoria">
     <h1 class="m-5">Crea Categoria</h1>
+    
     <a href="{{ route('categories.index') }}" class="text-secondary m-5">indietro</a>
 
     <div class="m-5">
+
+    @if (session()->has('success'))
+        <div class="alert alert-success">
+            <p>{{ session('success') }}</p>
+        </div>
+    @endif
+
     <form action="{{ route('categories.store') }}" method="post" class="m-5">
         @csrf
         <div class="row g-3">

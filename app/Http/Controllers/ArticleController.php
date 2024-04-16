@@ -6,16 +6,22 @@ use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Category;
 use App\Http\Requests\StoreArticleRequest;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NewArticle;
 
 class ArticleController extends Controller
 {
     public function create()
     {
-        return view('creaArticoli', ['categories' => Category::all()]);
+        return view('articles.create', ['categories' => Category::all()]);
     }
+
+
     public function store(StoreArticleRequest $request)
     {
         $article = Article::create($request->all());
+
+        Mail::to('Admin@example.com')->send(new NewArticle($article->title));
 
         if($request->hasFile('image') &&  $request->file('image')->isValid()) {
             
@@ -34,21 +40,36 @@ class ArticleController extends Controller
 
         
 
-        return  redirect()->route('articoliAuth')->with(['success'=>'Articolo inserito con successo']);
+        return  redirect()->back()->with(['success'=>'Articolo inserito con successo']);
     }
 
 
     public function index()
     {
-        $articles = Article::all();
-
-        return view('articles.index', ['articles' => $articles]);
+        return view('articles.index', ['articles' => Article::all()]);
     }
+
+    public function edit (Article $article)
+    {
+        return view('articles.edit', [
+            'article' => $article,
+            'categories' => Category::all()
+        ]);
+    }
+
+    public function update(StoreArticleRequest $request, Article $article)
+    {
+        $article->update($request->all());
+
+        return  redirect()->back()->with(['success'=>'Articolo modificato con successo']);   
+    }
+
+
     public function destroy(Article  $article)
     {
         $article->delete();
 
-        return redirect()->back();
+        return  redirect()->back()->with(['success'=>'Articolo eliminato con successo']);   
     }
     
 }

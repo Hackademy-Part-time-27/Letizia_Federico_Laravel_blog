@@ -22,6 +22,8 @@ class CategoryController extends Controller
     public function create()
     {
         return view('categories.create');
+
+        return redirect()->back()->with('success', 'categoria creata con successo');
     }
 
     /**
@@ -31,7 +33,7 @@ class CategoryController extends Controller
     {
         Category::create($request->all());
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'categoria creata con successo');
     }
 
     /**
@@ -57,7 +59,8 @@ class CategoryController extends Controller
     {
         $category->update($request->all());
 
-        return redirect()->back();
+        
+        return redirect()->back()->with('success', 'categoria modificata con successo');
     }
 
     /**
@@ -67,6 +70,5 @@ class CategoryController extends Controller
     {
         $category->delete();
 
-        return redirect()->back();
-    }
+        return redirect()->back()->with('success', 'categoria eliminata con successo');    }
 }

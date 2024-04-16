@@ -26,10 +26,7 @@ route::prefix('account')->middleware('auth')->group(function() {
 
     route::get('/', [AccountController::class, 'index'])->name('account.index');
 
-    Route::get('/articles', [ArticleController::class, 'index'])->name('articoliAuth');
-    Route::get('/articoli/crea', [ArticleController::class, 'create'])->name('creaArticoli');
-    Route::post('/articoli/store', [ArticleController::class, 'store'])->name('storeArticoli');
-    
+    Route::resource('/articles', ArticleController::class);
 
-    route::resource('/categories', CategoryController::class);
+    Route::resource('/categories', CategoryController::class);
 });

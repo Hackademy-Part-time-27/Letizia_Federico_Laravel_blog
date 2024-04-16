@@ -4,6 +4,12 @@
     <div class="text-end m-5">
         <a href="{{ route('categories.create') }}" class="btn btn-primary">Crea Categorie</a>
     </div>
+    
+    @if (session()->has('success'))
+        <div class="alert alert-success">
+            <p>{{ session('success') }}</p>
+        </div>
+    @endif
 
     <table class="table table-bordered m-5">
         <thead>

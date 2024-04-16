@@ -21,8 +21,8 @@
                             <a class="nav-link text-end dropdown-toggle fs-5 font-weight-bold dropdown-menu-end" href="#" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                {{ auth()->user()->email }}</a>
                             <ul class="dropdown-menu dropdown-menu-end ms-auto" aria-labelledby="dropdownMenuButton">
-                                <li><a class="dropdown-item  font-weight-bold" href="{{ route('creaArticoli') }}">Crea Articolo</a></li> 
-                                <li><a class="dropdown-item" href="{{ route('articoliAuth')}}">Gestione articoli</a></li>
+                                <li><a class="dropdown-item  font-weight-bold" href="{{ route('articles.create') }}">Crea Articolo</a></li> 
+                                <li><a class="dropdown-item" href="{{ route('articles.index')}}">Gestione articoli</a></li>
                                 <li><a class="dropdown-item" href="{{ route('categories.store')}}">Gestione Categorie</a></li>
                                 <li><hr class="dropdown-divider"></a></li>
                                 <li>

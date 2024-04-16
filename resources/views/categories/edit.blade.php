@@ -3,6 +3,13 @@
     <a href="{{ route('categories.index') }}" class="text-secondary m-5">indietro</a>
 
     <div class="m-5">
+
+    @if (session()->has('success'))
+        <div class="alert alert-success">
+            <p>{{ session('success') }}</p>
+        </div>
+    @endif
+    
     <form action="{{ route('categories.update', $category->id) }}" method="post" class="m-5">
         @csrf
         @method("PUT")

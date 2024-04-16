@@ -14,12 +14,12 @@ class ViewController extends Controller
     {
         $articoli = \App\Models\Article::all();
 
-        return view('articoli', ['articoli' => $articoli]);
+        return view('articles.articoli', ['articoli' => $articoli]);
     }
     public function article($id)
     {
         $articolo = \App\Models\Article::findOrFail($id);
-        return view('articolo', ['articolo' => $articolo]);
+        return view('articles.articolo', ['articolo' => $articolo]);
     }
     public function showForm()
     {
