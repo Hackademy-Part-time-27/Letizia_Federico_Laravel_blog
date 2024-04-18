@@ -11,11 +11,18 @@
         </div>
     @endif
 
-    <table class="table table-bordered m-5">
-        <thead>
+    @if (session()->has('warning'))
+        <div class="alert alert-warning">
+            <p>{{ session('warning') }}</p>
+        </div>
+    @endif
+
+    <table class="table table-bordered m-5 text-center">
+        <thead class="text-center">
             <tr>
                 <th>#</th>
                 <th>Nome</th>
+                <th>Articoli collegati</th>
                 <th></th>
             </tr>
         </thead>
@@ -24,9 +31,16 @@
                 <tr>
                     <td>{{ $category->id }}</td>
                     <td>{{ $category->name }}</td>
-                    <td class="">
-                        <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-secondary">Modifica</a>
-                        <form class="d-inline" action="{{ route('categories.destroy', $category )}}" method="post">
+                    <td>
+                        <ul>
+                            @foreach ($category -> articles as $article)
+                            <li><a href="{{ route('articolo', $article) }}" target="_blank">{{ $article->title }}</a></li>
+                            @endforeach
+                        </ul>
+                    </td>
+                    <td>
+                        <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-secondary mx-5">Modifica</a>
+                        <form class="d-inline mx-5" action="{{ route('categories.destroy', $category )}}" method="post">
                             @csrf
                             @method("DELETE")
                             <button type="submit" class="btn btn-danger">Cancella</button>

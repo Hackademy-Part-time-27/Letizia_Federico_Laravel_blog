@@ -25,9 +25,12 @@
 
             <div class="form-group">
                 <label for="category">Category:</label>
-                <select name="category" id="category" class="form-control">
+                <select name="category_id" id="category_id" class="form-control">
                     @foreach ($categories as $category)
-                         <option value="{{$category->name}}">{{$category->name}}</option>    
+                         <option 
+                            value="{{$category->id}}"
+                            @selected($category->id === $article->category_id)
+                            >{{$category->name}}</option>    
                     @endforeach
                 </select>
                 </div>

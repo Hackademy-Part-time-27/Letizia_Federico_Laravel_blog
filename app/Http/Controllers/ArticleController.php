@@ -19,7 +19,8 @@ class ArticleController extends Controller
 
     public function store(StoreArticleRequest $request)
     {
-        $article = Article::create($request->all());
+        $article = Article::create(array_merge($request->all(), ['user_id' => auth()->user()->id]));
+       
 
         // Mail::to('Admin@example.com')->send(new NewArticle($article->title));
 
@@ -34,10 +35,11 @@ class ArticleController extends Controller
             $fileName = uniqid('image') . '.' .  $extension;
 
             $article->image = $request->file('image')->storeAs('public/image/' . $article -> id, $fileName);
-
+            
             $article->save();
         }
-
+        
+        
         
 
         return  redirect()->back()->with(['success'=>'Articolo inserito con successo']);
@@ -46,11 +48,17 @@ class ArticleController extends Controller
 
     public function index()
     {
-        return view('articles.index', ['articles' => Article::all()]);
+        $articles = Article::where('user_id', auth()->user()->id)->orderBy('created_at', 'DESC')->get();
+
+        return view('articles.index', ['articles' => $articles]);
     }
 
     public function edit (Article $article)
     {
+        if (auth()->user()->id != $article->user_id) {
+            return redirect()->back();
+        }
+
         return view('articles.edit', [
             'article' => $article,
             'categories' => Category::all()
@@ -59,6 +67,10 @@ class ArticleController extends Controller
 
     public function update(StoreArticleRequest $request, Article $article)
     {
+        if (auth()->user()->id != $article->user_id) {
+            return redirect()->back();
+        }
+
         $article->update($request->all());
 
         return  redirect()->back()->with(['success'=>'Articolo modificato con successo']);   
@@ -67,6 +79,10 @@ class ArticleController extends Controller
 
     public function destroy(Article  $article)
     {
+        if (auth()->user()->id != $article->user_id) {
+            return redirect()->back();
+        }
+        
         $article->delete();
 
         return  redirect()->back()->with(['success'=>'Articolo eliminato con successo']);   
