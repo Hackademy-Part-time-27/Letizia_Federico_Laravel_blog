@@ -82,7 +82,7 @@ class ArticleController extends Controller
         if (auth()->user()->id != $article->user_id) {
             return redirect()->back();
         }
-        
+
         $article->delete();
 
         return  redirect()->back()->with(['success'=>'Articolo eliminato con successo']);   

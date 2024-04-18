@@ -23,11 +23,15 @@
 
             <div class="form-group">
                 <label for="category_id">Categoria:</label>
-                <select name="category_id" id="category_id" class="form-control">
                     @foreach ($categories as $category)
-                         <option value="{{$category->id}}">{{$category->name}}</option>    
+                      <div class="form-check">
+                        <input class="form-check-input" name="categories[]" value="{{ $category_id }}"> 
+                        <label  class="form-check-label" for="flexCheckDefault">
+                            {{ $category->name }}
+                        </label>
+                      </div>
+
                     @endforeach
-                </select>
                 </div>
             @error('category')
                 <small class="text-danger">{{ $message }}</small>  
