@@ -21,6 +21,7 @@ class ArticleController extends Controller
     {
         $article = Article::create(array_merge($request->all(), ['user_id' => auth()->user()->id]));
        
+        $article->categories()->attach([$request->categories]);
 
         // Mail::to('Admin@example.com')->send(new NewArticle($article->title));
 

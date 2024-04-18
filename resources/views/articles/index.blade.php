@@ -22,7 +22,14 @@
                 <td>{{$article->id}}</td>
                 <td>{{$article->title}}</td>
 
-                <td>{{ $article->category->name }}</td>
+                <td>
+                    @if ($article->category)
+                    <span>{{$article->category->name}}</span>
+
+                    @else
+                    <span>nessuna categoria</span>
+                    @endif
+                </td>
 
                 <td>
                     @if ($article->visible)

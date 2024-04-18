@@ -24,8 +24,8 @@
             <div class="form-group">
                 <label for="category_id">Categoria:</label>
                     @foreach ($categories as $category)
-                      <div class="form-check">
-                        <input class="form-check-input" name="categories[]" value="{{ $category_id }}"> 
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="categories[]" value="{{ $category->id }}"> 
                         <label  class="form-check-label" for="flexCheckDefault">
                             {{ $category->name }}
                         </label>
