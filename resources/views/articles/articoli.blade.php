@@ -8,7 +8,7 @@
             @foreach($articoli as $articolo)
                 <x-card
                     :title="$articolo->title"
-                    :category="$articolo->category->name"
+                    :category="$articolo->category"
                     :description="$articolo->description"
                     :route="route('articolo', $articolo->id)"/>
             @endforeach

@@ -1,29 +1,30 @@
-<x-layout title="Accedi">
+<x-layout title="Recupero password">
     <div class="row">
         <div class="col-md-6 mx-auto">
-            <h1 class="mt-5 text-center">Accedi con il tuo account</h1>
+            <h1 class="mt-5 text-center">Recupero password</h1>
         </div>
-    <</div>
+    </div>
 
     @if (session('status'))
         <div class="alert alert-success">
             {{ session('status') }}
         </div>
     @endif
-        
 
     <div class="m-5">
-        <form action="/login" method="post">
+        <form action="/reset-password" method="post">
             @csrf
-            <div class="row g-3">
+            <input type="hidden" name="token" value="{{ request()->route('token') }}">
+            <input type="hidden" name="email" value="{{ old('email', request()->email) }}">
+            <!-- <div class="row g-3">
                 <div class="col-12">
                     <label for="email">Email</label>
-                    <input type="email" name="email" id="email" class="form-control">
+                    
                     @error('email')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
                 </div>
-            </div>
+            </div> -->
 
             <div class="row g-3 mt-3">
                 <div class="col-12">
@@ -32,13 +33,19 @@
                     @error('password')
                         <small class="text-danger">{{ $message }}</small>
                     @enderror
-
-                    <a href="/forgot-password" class="small">Hai dimenticato la password?</a>
                 </div>
             </div>
 
+            <div class="row g-3 mt-3">
+                <div class="col-12">
+                    <label for="password_confirmation">Conferma password</label>
+                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
+                </div>
+            </div>
+
+
             <div class="col-12 mt-3">
-                <button type="submit" class="btn btn-primary">Accedi</button>
+                <button type="submit" class="btn btn-primary">Aggiorna password</button>
             </div>
         </form>
     </div>

@@ -1,4 +1,4 @@
-<x-layout title='Mifica articolo'>
+<x-layout title='Modifica articolo'>
     
     <div class="mt-5 m-5">
         <h1 class="text-center mb-5">Modifica Articolo</h1> 
@@ -24,17 +24,18 @@
             @enderror
 
             <div class="form-group">
-                <label for="category">Category:</label>
-                <select name="category_id" id="category_id" class="form-control">
+                <label for="categories">Categoria:</label>
                     @foreach ($categories as $category)
-                         <option 
-                            value="{{$category->id}}"
-                            @selected($category->id === $article->category_id)
-                            >{{$category->name}}</option>    
+                    <div class="form-check">
+                        <input class="form-check-input" @checked($article->categories->contains($category->id)) type="checkbox" name="categories[]" value="{{ $category->id }}"> 
+                        <label  class="form-check-label" for="flexCheckDefault">
+                            {{ $category->name }}
+                        </label>
+                      </div>
+
                     @endforeach
-                </select>
                 </div>
-            @error('category')
+            @error('categories')
                 <small class="text-danger">{{ $message }}</small>  
             @enderror
 

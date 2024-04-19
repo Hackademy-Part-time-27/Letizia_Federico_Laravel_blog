@@ -22,7 +22,7 @@
             @enderror
 
             <div class="form-group">
-                <label for="category_id">Categoria:</label>
+                <label for="categories">Categoria:</label>
                     @foreach ($categories as $category)
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="categories[]" value="{{ $category->id }}"> 
@@ -33,7 +33,7 @@
 
                     @endforeach
                 </div>
-            @error('category')
+            @error('categories')
                 <small class="text-danger">{{ $message }}</small>  
             @enderror
 

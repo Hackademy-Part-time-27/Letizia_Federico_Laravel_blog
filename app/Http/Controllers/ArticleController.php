@@ -74,6 +74,9 @@ class ArticleController extends Controller
 
         $article->update($request->all());
 
+        $article->categories()->detach();
+        $article->categories()->attach($request->categories);
+
         return  redirect()->back()->with(['success'=>'Articolo modificato con successo']);   
     }
 
@@ -83,6 +86,8 @@ class ArticleController extends Controller
         if (auth()->user()->id != $article->user_id) {
             return redirect()->back();
         }
+
+        $article->categories()->detach();
 
         $article->delete();
 

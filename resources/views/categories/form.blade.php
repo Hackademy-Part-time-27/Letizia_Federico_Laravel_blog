@@ -1,5 +1,5 @@
-<x-layout title="Modifica Categoria">
-    <h1 class="m-5">Modifica Categoria</h1>
+<x-layout :title="$title">
+    <h1 class="m-5">{{ $title }}</h1>
     <a href="{{ route('categories.index') }}" class="text-secondary m-5">indietro</a>
 
     <div class="m-5">
@@ -10,9 +10,13 @@
         </div>
     @endif
     
-    <form action="{{ route('categories.update', $category->id) }}" method="post" class="m-5">
+    <form action="{{ $action }}" method="post" class="m-5">
         @csrf
-        @method("PUT")
+
+        @if ($category->id)
+            @method("PUT")
+        @endif
+
         <div class="row g-3">
             <div class="col-12">
                 <label for="name">Nome</label>
@@ -22,7 +26,7 @@
                 @enderror
             </div>
             <div class="col-12">
-                <button type="submit" class="btn btn-primary">Modifica</button>
+                <button type="submit" class="btn btn-primary">{{ $button }}</button>
             </div>
     </form>
 </div>

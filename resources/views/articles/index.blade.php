@@ -21,14 +21,10 @@
             <tr>
                 <td>{{$article->id}}</td>
                 <td>{{$article->title}}</td>
-
                 <td>
-                    @if ($article->category)
-                    <span>{{$article->category->name}}</span>
-
-                    @else
-                    <span>nessuna categoria</span>
-                    @endif
+                    @foreach ($article->categories as $category)
+                    <span>{{$category->name}}</span>
+                    @endforeach
                 </td>
 
                 <td>
