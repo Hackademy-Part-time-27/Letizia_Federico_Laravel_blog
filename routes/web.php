@@ -6,6 +6,8 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\AnimeController;
+
 
 Route::get('/', [ViewController::class, 'home'])->name('homepage');
 
@@ -30,3 +32,7 @@ route::prefix('account')->middleware('auth')->group(function() {
 
     Route::resource('/categories', CategoryController::class);
 });
+
+Route::get('anime/genres', [Animecontroller::class, 'genres'])->name('anime.genres');
+Route::get('anime/genres/{genre_id}', [Animecontroller::class, 'anime'])->name('anime');
+Route::get('anime/{anime_id}', [Animecontroller::class, 'animeShow'])->name('anime.show');

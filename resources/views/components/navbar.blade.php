@@ -14,6 +14,9 @@
                 <li class="nav-item">
                     <a class="nav-link fs-5 text-white font-weight-bold" href="{{ route('articoli') }}">Articoli</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link fs-5 text-white font-weight-bold" href="{{ route('anime.genres') }}">Anime</a>
+                </li>
                 @auth
                     <ul class="navbar-nav ms-auto dropdown-menu-end bg-primary-subtle text-end">
                         
