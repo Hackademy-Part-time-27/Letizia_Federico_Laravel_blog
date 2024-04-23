@@ -36,3 +36,8 @@ route::prefix('account')->middleware('auth')->group(function() {
 Route::get('anime/genres', [Animecontroller::class, 'genres'])->name('anime.genres');
 Route::get('anime/genres/{genre_id}', [Animecontroller::class, 'anime'])->name('anime');
 Route::get('anime/{anime_id}', [Animecontroller::class, 'animeShow'])->name('anime.show');
+
+Route::get('/counter', App\Livewire\Counter::class);
+
+Route::get('/cerca-utenti', [ViewController::class, 'searchUsers'])->name('users.search');
+Route::get('/cerca-articoli', [ArticleController::class, 'search'])->name('articles.search');

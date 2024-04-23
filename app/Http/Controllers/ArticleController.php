@@ -93,5 +93,10 @@ class ArticleController extends Controller
 
         return  redirect()->back()->with(['success'=>'Articolo eliminato con successo']);   
     }
+
+    public function search()
+    {
+        return view('articles.search');
+    }
     
 }

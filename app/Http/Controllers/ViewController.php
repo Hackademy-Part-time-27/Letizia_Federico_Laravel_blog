@@ -25,5 +25,10 @@ class ViewController extends Controller
     {
         return view('contatti');
     }
+
+    public function searchUsers()
+    {
+        return view('search-users');
+    }
     
 }
