@@ -12,9 +12,19 @@
     </style>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+ 
+   
 <body>
     <x-navbar />
-    {{ $slot }}
+
+    <div class="m-5">
+        <div class="m-5">
+            <div class="m-5">
+                 {{ $slot }}
+            </div>
+        </div>
+    </div>
+      
 
 </body>
 </html>

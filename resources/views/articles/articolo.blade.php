@@ -18,7 +18,7 @@
 
         <img src="{{ Storage::url($articolo['image'])}}" alt="">
 
-        <a href="{{ route('articoli') }}" class="btn btn-primary">Torna agli articoli</a>
+        <a href="{{ route('articoli') }}" class="btn btn-primary mt-5">Torna agli articoli</a>
     </div>
 
    

@@ -55,4 +55,9 @@ class User extends Authenticatable
         return self::where('name', 'like', "%$search%")
                     ->orwhere('email','like', "%$search%")->get();
     }
+
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }
 }

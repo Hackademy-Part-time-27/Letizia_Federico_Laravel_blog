@@ -26,11 +26,16 @@ Route::post('/contatti', [ContactController::class, 'processForm'])->name('conta
 
 route::prefix('account')->middleware('auth')->group(function() {
 
-    route::get('/', [AccountController::class, 'index'])->name('account.index');
+    Route::get('/', [AccountController::class, 'index'])->name('account.index');
 
     Route::resource('/articles', ArticleController::class);
 
     Route::resource('/categories', CategoryController::class);
+
+    Route::get('/users', function() {
+        return view('admin.users');
+    });
+    
 });
 
 Route::get('anime/genres', [Animecontroller::class, 'genres'])->name('anime.genres');
